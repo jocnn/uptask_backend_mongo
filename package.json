@@ -2,6 +2,7 @@
   "name": "uptask_backend",
   "version": "1.0.0",
   "description": "mern stack with nodejs express, mongo",
+  "type":"module",
   "main": "index.js",
   "author": "jocnn",
   "license": "MIT",
