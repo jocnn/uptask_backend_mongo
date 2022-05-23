@@ -2,7 +2,7 @@ import express from 'express'
 import 'dotenv/config'
 
 import connectDB from './config/db.js'
-import usuarioRouter from './routes/usuarioRoutes.js'
+import usuarioRouter from './routes/usuarioRoute.js'
 
 const app = express()
 
