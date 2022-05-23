@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 import usuarioRouter from './routes/usuarioRoute.js'
 
 const app = express()
+app.use(express.json())
 
 connectDB()
 
