@@ -2,7 +2,7 @@
   "name": "uptask_backend",
   "version": "1.0.0",
   "description": "mern stack with nodejs express, mongo",
-  "type":"module",
+  "type": "module",
   "main": "index.js",
   "author": "jocnn",
   "license": "MIT",
@@ -11,7 +11,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
