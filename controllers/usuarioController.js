@@ -28,6 +28,11 @@ const registrarUsuario = async (req, res) => {
   
 }
 
+const autenticarUsuario = async (req, res) => {
+  
+}
+
 export {
-  registrarUsuario
+  registrarUsuario,
+  autenticarUsuario
 }
