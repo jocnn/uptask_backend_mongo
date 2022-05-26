@@ -9,7 +9,7 @@ import {
   comprobarToken,
   nuevoPassword,
   perfil
-} from "../controllers/usuarioController.js";
+} from "../controllers/UsuarioController.js";
 
 const router = express.Router()
 
