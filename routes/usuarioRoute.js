@@ -1,11 +1,14 @@
 import express from "express";
+import checkAuth from "../middleware/checkAuth.js";
+
 import { 
   registrarUsuario, 
   autenticarUsuario, 
   confirmar, 
   olvidePassword,
   comprobarToken,
-  nuevoPassword
+  nuevoPassword,
+  perfil
 } from "../controllers/usuarioController.js";
 
 const router = express.Router()
@@ -17,5 +20,7 @@ router.post('/olvide-password', olvidePassword)
 router.route('/olvide-password/:token')
   .get(comprobarToken)
   .post(nuevoPassword)
+
+router.get('/perfil', checkAuth, perfil)
 
 export default router
