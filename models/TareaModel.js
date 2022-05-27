@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const tareaSchema = moongoose.Schema({
+const tareaSchema = mongoose.Schema({
   nombre: {
     type: String,
     trim: true,
@@ -26,7 +26,7 @@ const tareaSchema = moongoose.Schema({
     enum: ["Baja", "Media", "Alta"]
   },
   proyecto: {
-    type: mongoose.Schema.Type.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Proyecto'
   }
 }, {
