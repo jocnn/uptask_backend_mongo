@@ -6,7 +6,29 @@ const obtenerProyectos = async (req, res) => {
   res.json(proyectos)
 }
 
-const obtenerProyecto = async (req, res) => {}
+const obtenerProyecto = async (req, res) => {
+  const { id } = req.params
+
+  // evitando que la server se cuelge por un intento de acceso no autorizado 
+  if (id.length > 24 || id.length < 24) {
+    const error = new Error("Acceso no autorizado")
+    return res.status(404).json({ msg: error.message })
+  }
+
+  const proyecto = await Proyecto.findById(id)
+
+  if (!proyecto) {
+    const error = new Error("Proyecto no encontrado")
+    return res.status(404).json({ msg: error.message })
+  }
+
+  if (proyecto.creador.toString() !== req.usuario._id.toString()) {
+    const error = new Error("Acción no válida")
+    return res.status(401).json({ msg: error.message })
+  }
+
+  res.json(proyecto)
+}
 
 const nuevoProyecto = async (req, res) => {
   const proyecto = new Proyecto(req.body)
