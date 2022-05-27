@@ -16,7 +16,7 @@ connectDB()
  */
 app.use('/api/usuarios', usuarioRouter)
 app.use('/api/proyectos', proyectoRouter)
-app.use('/api/tarea', tareaRouter)
+app.use('/api/tareas', tareaRouter)
 
 const PORT_SERV = process.env.PORT_SERVER || 4000
 
