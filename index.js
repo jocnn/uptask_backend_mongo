@@ -4,6 +4,7 @@ import 'dotenv/config'
 import connectDB from './config/db.js'
 import usuarioRouter from './routes/UsuarioRoute.js'
 import proyectoRouter from './routes/ProyectoRoute.js'
+import tareaRouter from './routes/TareaRoute.js'
 
 const app = express()
 app.use(express.json())
@@ -15,6 +16,7 @@ connectDB()
  */
 app.use('/api/usuarios', usuarioRouter)
 app.use('/api/proyectos', proyectoRouter)
+app.use('/api/tarea', tareaRouter)
 
 const PORT_SERV = process.env.PORT_SERVER || 4000
 
