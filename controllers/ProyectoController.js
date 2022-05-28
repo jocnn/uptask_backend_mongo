@@ -28,7 +28,13 @@ const obtenerProyecto = async (req, res) => {
     return res.status(401).json({ msg: error.message })
   }
 
-  res.json(proyecto)
+  // obtener tareas de proyecto
+  const tarea = await Tarea.find().where("proyecto").equals(proyecto._id)
+
+  res.json({
+    proyecto,
+    tarea
+  })
 }
 
 const nuevoProyecto = async (req, res) => {
@@ -110,20 +116,6 @@ const agregarColaboradorProyecto = async (req, res) => {}
 
 const eliminarColaboradorProyecto = async (req, res) => {}
 
-const obtenerTareasProyecto = async (req, res) => {
-  const { id } = req.params
-  const existeProyecto = await Proyecto.findById(id)
-
-  if (!existeProyecto) {
-    const error = new Error("No encontrado")
-    return res.status(404).json({ msg: error.messaage })
-  }
-
-  const tarea = await Tarea.find().where("proyecto").equals(id)
-
-  res.json(tarea)
-}
-
 export {
   obtenerProyectos,
   obtenerProyecto,
@@ -131,6 +123,5 @@ export {
   editarProyecto,
   eliminarProyecto,
   agregarColaboradorProyecto,
-  eliminarColaboradorProyecto,
-  obtenerTareasProyecto
+  eliminarColaboradorProyecto
 }
