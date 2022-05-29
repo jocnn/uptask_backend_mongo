@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 const connectDB = async () => {
   try {
-    const cn = await mongoose.connect(`mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.DOMINIO_DB}:${process.env.PORT_DB}/?authMechanism=DEFAULT`)
+    const cn = await mongoose.connect(`mongodb://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.DOMINIO_DB}:${process.env.PORT_DB}/?authMechanism=DEFAULT&&authSource=${process.env.NAME_DB}`)
     const url = `conexion en mongodb: ${cn.connection.host}:${cn.connection.port}`
     console.info(url)
     
