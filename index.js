@@ -1,6 +1,6 @@
 import express from 'express'
 import 'dotenv/config'
-
+import cors from 'cors'
 import connectDB from './config/db.js'
 import usuarioRouter from './routes/UsuarioRoute.js'
 import proyectoRouter from './routes/ProyectoRoute.js'
@@ -10,6 +10,22 @@ const app = express()
 app.use(express.json())
 
 connectDB()
+
+// configurando cors
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log(origin)
+    if (whitelist.includes(origin)) {
+      // puede consultar la api
+      callback(null, true)
+    } else {
+      // no esta permitido
+      callback(new Error("Error de Cors"))
+    }
+  }
+}
+app.use(cors(corsOptions))
 
 /**
  * ROUTING
