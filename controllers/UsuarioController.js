@@ -12,7 +12,7 @@ const registrarUsuario = async (req, res) => {
    */
   if (existeUsuario) {
     const error = new Error("Usuario ya registrado")
-    return res.status(400).json({ msj: error.message })
+    return res.status(400).json({ msg: error.message })
   }
 
   try {
@@ -20,8 +20,10 @@ const registrarUsuario = async (req, res) => {
     usuario.token = generarId()
     // console.info(usuario)
 
-    const usuarioAlmacenado = await usuario.save()
-    res.json(usuarioAlmacenado)
+    await usuario.save()
+    res.json({ 
+      msg: "Usuario Creado Correctamente, revisa tu email para confirmar tu cuenta"
+    })
 
   } catch (error) {
     console.error(error)
