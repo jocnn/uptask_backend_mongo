@@ -1,6 +1,7 @@
 import Usuario from "../models/UsuarioModel.js"
 import generarId from "../helpers/generarId.js"
 import generarJWT from "../helpers/generarJWT.js"
+import { emailRegistro } from "../helpers/email.js"
 
 const registrarUsuario = async (req, res) => {
   
@@ -19,6 +20,12 @@ const registrarUsuario = async (req, res) => {
     const usuario = new Usuario(req.body)
     usuario.token = generarId()
     // console.info(usuario)
+
+    emailRegistro({
+      nombre: usuario.nombre,
+      email: usuario.email,
+      token: usuario.token
+    })
 
     await usuario.save()
     res.json({ 
