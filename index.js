@@ -12,7 +12,7 @@ app.use(express.json())
 connectDB()
 
 // configurando cors
-const whitelist = ["http://localhost:3000"]
+const whitelist = [process.env.FRONTEND_URL]
 const corsOptions = {
   origin: function (origin, callback) {
     console.log(origin)
