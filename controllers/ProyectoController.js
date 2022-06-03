@@ -28,13 +28,14 @@ const obtenerProyecto = async (req, res) => {
     return res.status(401).json({ msg: error.message })
   }
 
-  // obtener tareas de proyecto
-  const tarea = await Tarea.find().where("proyecto").equals(proyecto._id)
+  // // obtener tareas de proyecto
+  // const tarea = await Tarea.find().where("proyecto").equals(proyecto._id)
 
-  res.json({
-    proyecto,
-    tarea
-  })
+  // res.json({
+  //   proyecto,
+  //   tarea
+  // })
+  res.json(proyecto)
 }
 
 const nuevoProyecto = async (req, res) => {
